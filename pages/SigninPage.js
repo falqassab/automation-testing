@@ -13,16 +13,20 @@ export class SignInPage {
         await this.page.click('#login2');
     }
 
-    async login(username, password) {
+    async login(username, password, options = { expectWelcome: true }) {
         
         await this.usernameInput.fill(username);
         await this.passwordInput.fill(password);
+
         await this.loginButton.click();
 
         // Wait for welcome message to appear
-        await this.userWelcome.waitFor({ state: 'visible', timeout: 10000 });
+        if (options.expectWelcome) {
+            // Wait for welcome message only for positive tests
+            await this.userWelcome.waitFor({ state: 'visible', timeout: 10000 });
+        }
    
-  }
+    }
 
       async isWelcomeVisible() {
         return await this.userWelcome.isVisible();
@@ -34,6 +38,13 @@ export class SignInPage {
 
     async logout() {
         await this.logoutButton.click();
+    }
+
+        async handleDialog(expectedMessage) {
+        this.page.once('dialog', async dialog => {
+            expect(dialog.message()).toContain(expectedMessage);
+            await dialog.accept();
+        });
     }
 
 
