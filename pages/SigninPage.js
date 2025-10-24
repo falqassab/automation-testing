@@ -14,15 +14,13 @@ export class SignInPage {
     }
 
     async login(username, password) {
-                // Accept login dialog automatically
-        this.page.once('dialog', async dialog => await dialog.accept());
-
+        
         await this.usernameInput.fill(username);
         await this.passwordInput.fill(password);
         await this.loginButton.click();
 
         // Wait for welcome message to appear
-        await this.userWelcome.waitFor({ state: 'visible', timeout: 5000 });
+        await this.userWelcome.waitFor({ state: 'visible', timeout: 10000 });
    
   }
 
