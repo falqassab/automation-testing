@@ -4,7 +4,9 @@ import testData from '../../data/test-data.json' assert { type: 'json' };
 
 test.describe('Login functionality', ()=> {
 
-  test('TC-LI-001 User can sign in successfully', async ({ page }) => {
+  test('TC-LI-001 User can sign in successfully', async ({ page },testInfo) => {
+    testInfo.video = `videos/${testInfo.title.replace(/\s+/g, '_')}.webm`;
+
     const login = new SignInPage(page);
     await login.goto();
     await login.login(testData.user.username, testData.user.password);
@@ -31,7 +33,9 @@ test('TC-LI-002 User cannot sign in with incorrect password', async ({ page }) =
   await login.login(testData.user.username, "wrongpassword", { expectWelcome: false });
 });
 
-test('TC-LI-003 User cannot log in with unregistered username', async ({ page }) => {
+test('TC-LI-003 User cannot log in with unregistered username', async ({ page }, testInfo) => {
+      testInfo.video = `videos/${testInfo.title.replace(/\s+/g, '_')}.webm`;
+
   const login = new SignInPage(page);
 
   page.once('dialog', async dialog => {
