@@ -1,0 +1,18 @@
+{
+  "user": {
+    "username": "testuser_20256",
+    "password": "usertest123"
+  },
+    "user1": {
+    "username": "testuser_20256_1",
+    "password": "usertest123"
+  },
+    "user2": {
+    "username": "testuser_20256_2",
+    "password": "usertest123"
+  },
+  "invalidUser": {
+    "username": "wronguser",
+    "password": "wrongpass"
+  }
+}
