@@ -1,4 +1,4 @@
-# automation-testing
+# E22 Testing
 This repository contains an End-to-End (E2E) testing framework built using Playwright to automate core authentication workflows — Sign Up, Sign In, and Sign Out — for the DemoBlaze Web App.
 The framework follows the Page Object Model (POM) design and integrates with GitHub Actions for CI/CD automation.
 
